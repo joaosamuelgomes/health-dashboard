@@ -1,6 +1,6 @@
 const pool = require("../config/dbConfig");
 
-async function fetchPsicossocialData(sex, age, cid) {
+async function fetchPsicossocialData(sex, cid) {
   // query inicial
   let query = `
       SELECT p.dt_atend, p.ufmun, p.idadepac, p.sexopac, s.cd_descr
@@ -15,18 +15,10 @@ async function fetchPsicossocialData(sex, age, cid) {
     query += " AND p.sexopac = $1";
     params.push(sex);
   }
-
-  if (age) {
-    query += ` AND p.idadepac = $${params.length + 1}`;
-    params.push(age);
-  }
-
   if (cid) {
     query += ` AND s.cd_cod = $${params.length + 1}`;
     params.push(cid);
   }
-
-  query += " ORDER BY p.dt_atend ASC";
 
   //   console.log("Query: ", query);
   //   console.log("Params: ", params);
