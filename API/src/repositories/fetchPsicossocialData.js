@@ -1,7 +1,7 @@
 const pool = require("../config/dbConfig");
 
 async function fetchPsicossocialData(sex, age, cid) {
-    // query inicial
+  // query inicial
   let query = `
       SELECT p.dt_atend, p.ufmun, p.idadepac, p.sexopac, s.cd_descr
       FROM psicossocial.psrs p

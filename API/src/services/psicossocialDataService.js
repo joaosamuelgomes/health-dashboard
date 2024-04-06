@@ -1,9 +1,9 @@
 const {
   fetchPsicossocialData,
 } = require("../repositories/fetchPsicossocialData.js");
-const { filterByTimeRange } = require("../utils/timeRangeFilter");
+const { filterByTimeRange } = require("../utils/timeRangeFilter.js");
 
-async function psicossocialDataUseCase(time_range, sex, age, cid) {
+async function psicossocialDataService(time_range, sex, age, cid) {
   try {
     // console.log("time_range: ", time_range);
     // console.log("sex: ", sex);
@@ -23,4 +23,4 @@ async function psicossocialDataUseCase(time_range, sex, age, cid) {
   }
 }
 
-module.exports = psicossocialDataUseCase;
+module.exports = psicossocialDataService;

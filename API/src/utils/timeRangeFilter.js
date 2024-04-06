@@ -1,12 +1,12 @@
 async function filterByTimeRange(data, time_range) {
   // converte os valores do intervalo
-  timeRangeStart = time_range.split("-")[0];
-  timeRangeEnd = time_range.split("-")[1];
+  let timeRangeStart = time_range.split("-")[0];
+  let timeRangeEnd = time_range.split("-")[1];
   const startNum = Number(timeRangeStart);
   const endNum = Number(timeRangeEnd);
   console.log("startNum: ", startNum);
-    console.log("endNum: ", endNum);
-    //console.log(data)
+  console.log("endNum: ", endNum);
+  //console.log(data)
 
   // filtra os dados
   const filteredData = data.filter((item) => {

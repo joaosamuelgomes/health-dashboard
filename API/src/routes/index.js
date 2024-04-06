@@ -1,13 +1,10 @@
 const express = require("express");
-const router = express.Router();
-const {
-  testConnectionController,
-} = require("../controller/testConnectionController");
-const {
-  psicossocialController,
-} = require("../controller/psicossocialController");
+const psicossocialRouter = require("./psicossocial.routes");
+const testConnectionRouter = require("./testConnection.routes");
 
-router.get("/testConnection", testConnectionController);
-router.get("/psicossocial", (req, res) => psicossocialController(req, res));
+// create router instance
+const router = express.Router();
+router.use(psicossocialRouter);
+router.use(testConnectionRouter);
 
 module.exports = router;
