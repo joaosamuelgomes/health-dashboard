@@ -16,7 +16,7 @@ export const fetchData = async (time_range, age, cid, sex) => {
       url += `&sex=${sex}`;
     }
     const res = await axiosApiInstance.get(url);
-    //console.log(`fetch url -> `, url);
+    console.log(`fetch url -> `, url);
     return res.data;
   } catch (error) {
     console.error("Error fetching data:", error);

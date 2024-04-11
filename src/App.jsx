@@ -21,6 +21,12 @@ function App() {
   //const [filterSex, setFilterSex] = useState("");
   const [maleCount, setMaleCount] = useState(0);
   const [femaleCount, setFemaleCount] = useState(0);
+  
+  // -- query params -- //
+  const [time_range, setTime_range] = useState("202402-202402");
+  const [age, setAge] = useState("");
+  const [cid, setCid] = useState("");
+  const [sex, setSex] = useState("");
 
   ChartJS.register(
     CategoryScale,
@@ -31,17 +37,13 @@ function App() {
     Legend
   );
 
+  // fetch data
   useEffect(() => {
-    // Fetch data
-    const time_range = ``;
-    const age = ``;
-    const cid = ``;
-    const sex = ``;
     fetchData(time_range, age, cid, sex).then((data) => {
       //console.log(data);
       setDados(data.data);
     });
-  }, []);
+  }, [time_range, age, sex, cid]);
 
   // useEffect(() => {
   //   if (filterSex === "") {
