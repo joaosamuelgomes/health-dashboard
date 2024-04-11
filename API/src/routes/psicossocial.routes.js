@@ -35,8 +35,8 @@ const {
   @responses
     200: 
       status - string - Status of the response.
-      data - array - Array of psicossocial data entries.
-        example: [{...}]
+      data - array - Array of psicossocial data.
+        example: [{data: [...]}, {somaCids: {...}}, {filtros: {...}}]
     500:
       status - string - Status of the response in case of an error.
       message - string - Message describing the error.

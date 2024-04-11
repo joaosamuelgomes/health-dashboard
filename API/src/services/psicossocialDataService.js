@@ -1,30 +1,29 @@
 const {
   fetchPsicossocialData,
 } = require("../repositories/fetchPsicossocialData.js");
-const { filterByTimeRange } = require("../utils/timeRangeFilter.js");
-const { filterByAge } = require("../utils/ageFilter.js");
+const { psicossocialFilter } = require("../utils/psicossocialFilters.js");
+const { sumCid } = require("../utils/sumCid.js");
 
 async function psicossocialDataService(time_range, sex, age, cid) {
   try {
-    // console.log("time_range: ", time_range);
-    // console.log("sex: ", sex);
-    // console.log("age: ", age);
-    // console.log("cid: ", cid);
-
     // converte o sexo para maiúsculo
     const uppercaseSex = sex ? sex.toUpperCase() : null;
+    const uppercaseCid = cid ? cid.toUpperCase() : null;
     // busca os dados no banco de dados
-    let data = await fetchPsicossocialData(uppercaseSex, cid);
+    let data = await fetchPsicossocialData(uppercaseSex, uppercaseCid);
     //console.log(data);
-    // filtra os dados pelo intervalo de tempo caso exista
-    if (time_range) {
-      data = filterByTimeRange(data, time_range);
+    // filtra os dados
+    if (time_range || age) {
+      data = psicossocialFilter(data, time_range, age);
     }
-    // filtra os dados pela idade do paciente caso exista
-    if (age) {
-      data = filterByAge(data, age);
-    }
-    return data;
+    // soma os cids
+    //console.log(`data -> `,data)
+    somaCid = sumCid(data);
+    return {
+      data: data,
+      somaCids: somaCid,
+      filtros: { time_range: time_range, sex: sex, age: age, cid: cid },
+    };
   } catch (error) {
     console.error("Error: ", error);
     throw error;
