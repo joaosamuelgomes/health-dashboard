@@ -54,6 +54,10 @@ const {
                 M: number,
                 F: number
               },
+              ageCounts: {
+                "0-10": number,
+                "11-20": number, ...
+              },
               total: number
             }
           ],
