@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
-  psicossocialController,
+    psicossocialController,
 } = require("../controller/psicossocialController");
 
 /**
@@ -35,8 +35,33 @@ const {
   @responses
     200: 
       status - string - Status of the response.
-      data - array - Array of psicossocial data.
-        example: [{data: [...]}, {somaCids: {...}}, {filtros: {...}}]
+      data - object - objects of psicossocial data.
+        example: 
+        {
+          data: [
+            {
+              dt_atend: string
+              ufmun: string
+              idadepac: string
+              sexopac: string
+              cd_descr: string
+            }
+          ],
+          somaCids: [
+            {
+              name: string,
+              genderCounts: {
+                M: number,
+                F: number
+              },
+              total: number
+            }
+          ],
+          filtros: {
+            age: string,
+          }
+        }
+        
     500:
       status - string - Status of the response in case of an error.
       message - string - Message describing the error.
