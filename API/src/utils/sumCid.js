@@ -6,6 +6,7 @@ function sumCid(data) {
         const gender = item.sexopac;
         const age = item.idadepac;
 
+        // se o cid nao estiver no objeto totalCid, cria um objeto
         if (!(cid in totalCid)) {
             totalCid[cid] = {
                 name: cid,
@@ -29,13 +30,8 @@ function sumCid(data) {
             };
         }
 
-        // Incrementa o total geral de consultas
         totalCid[cid].total++;
-
-        // Incrementa a contagem por gênero
         totalCid[cid].genderCounts[gender]++;
-
-        // Determina a faixa etária e incrementa a contagem correspondente usando switch case
         switch (true) {
             case age >= 0 && age <= 10:
                 totalCid[cid].ageCounts["0-10"]++;
