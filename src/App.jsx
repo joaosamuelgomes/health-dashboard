@@ -19,10 +19,10 @@ function App() {
     const [femaleCount, setFemaleCount] = useState(0);
 
     // -- query params -- //
-    const [time_range, setTime_range] = useState("202311-202402");
+    const [time_range, setTime_range] = useState("");
     const [age, setAge] = useState("");
     const [cid, setCid] = useState("");
-    const [sex, setSex] = useState("");
+    const [gender, setGender] = useState("");
 
     ChartJS.register(
         CategoryScale,
@@ -34,20 +34,29 @@ function App() {
     );
 
     useEffect(() => {
-        fetchData(time_range, age, cid, sex).then((data) => {
+        fetchData(time_range, age, cid, gender).then((data) => {
             console.log("Dados retornados:", data.data);
-            setDados(Array.isArray(data.data.data) ? data.data.data : []);
+            setDados(data.data);
         });
-    }, [time_range, age, sex, cid]);
+    }, [time_range, age, gender, cid]);
 
     useEffect(() => {
-        const maleData = dados.filter((item) => item && item.sexopac === "M");
-        const femaleData = dados.filter((item) => item && item.sexopac === "F");
-        setMaleCount(maleData.length);
-        setFemaleCount(femaleData.length);
+        if (dados && dados.somaCids) {
+            let maleCount = 0;
+            let femaleCount = 0;
+
+            // calcular a quantidade de generos
+            dados.somaCids.forEach((item) => {
+                maleCount += item.genderCounts["M"];
+                femaleCount += item.genderCounts["F"];
+            });
+
+            setMaleCount(maleCount);
+            setFemaleCount(femaleCount);
+        }
     }, [dados]);
 
-    const labels = ["Sexo"];
+    const labels = ["Genero"];
 
     const options = {
         responsive: true,
