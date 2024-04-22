@@ -6,7 +6,7 @@ async function fetchCidAtemporalData(cid, time_range) {
     SELECT TO_CHAR(TO_DATE(p.dt_atend, 'YYYYMMDD'), 'YYYYMM') as yearMonth, COUNT(*) as ocorrencias
     FROM psicossocial.psrs p
     JOIN psicossocial.s_cid s ON p.cidpri = s.cd_cod
-    WHERE 1 = 1
+    WHERE 1 = 1 AND p.ufmun = '431020'
     `;
 
     const params = [];

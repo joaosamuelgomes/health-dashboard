@@ -6,6 +6,7 @@ async function fetchUniqueCids() {
         SELECT DISTINCT s.cd_cod
         FROM psicossocial.psrs p
         JOIN psicossocial.s_cid s ON p.cidpri = s.cd_cod
+        WHERE p.ufmun = '431020'
     `;
 
     const { rows } = await pool.query(query);
