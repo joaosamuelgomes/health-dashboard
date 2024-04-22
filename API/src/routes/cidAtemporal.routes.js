@@ -3,8 +3,9 @@ const router = express.Router();
 const {
     cidAtemporalController,
 } = require("../controller/cidAtemporalController");
+const { validateCidAtemporalParams } = require("../middlewares/validateCidAtemporalParams");
 
-router.get("/cidAtemporal", (req, res) => cidAtemporalController(req, res));
+router.get("/cidAtemporal", validateCidAtemporalParams, (req, res) => cidAtemporalController(req, res));
 
 /**
   @route   GET api/cidAtemporal
