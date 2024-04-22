@@ -27,12 +27,6 @@ async function psicossocialDataService(time_range, sex, age, cid) {
         return {
             data: data,
             somaCids: somaCid,
-            filtros: {
-                time_range: time_range,
-                sex: uppercaseSex,
-                age: age,
-                cid: cid,
-            },
         };
     } catch (error) {
         console.error("Error: ", error);
