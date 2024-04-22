@@ -38,31 +38,40 @@ const {
       data - object - objects of psicossocial data.
         example: 
         {
-          data: [
-            {
-              dt_atend: string
-              ufmun: string
-              idadepac: string
-              sexopac: string
-              cd_descr: string
-            }
-          ],
-          somaCids: [
-            {
+          status: "success",
+          data: {
+            data: [{
+              dt_atend: string,
+              ufmun: string,
+              idadepac: string,
+              sexopac: string,
+              cd_desc: string,
+            }],
+            somaCids: [{
               name: string,
-              genderCounts: {
+              gendercounts: {
                 M: number,
-                F: number
+                F: number,
               },
-              ageCounts: {
+              agecounts: {
                 "0-10": number,
-                "11-20": number, ...
+                "11-20": number,
+                "21-30": number,
+                "31-40": number,
+                "41-50": number,
+                "51-60": number,
+                "61-70": number,
+                "71-80": number,
+                "81-90": number,
+                "91-100": number,
               },
-              total: number
-            }
-          ],
+            }]
+          },
           filtros: {
+            time_range: string,
+            cid: string,
             age: string,
+            sex: string,
           }
         }
         
