@@ -1,6 +1,4 @@
-const {
-    fetchUniqueCids,
-} = require("../repositories/fetchUniqueCids.js");
+const { fetchUniqueCids } = require("../repositories/fetchUniqueCids.js");
 
 async function uniqueCidsDataService() {
     try {

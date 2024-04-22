@@ -9,7 +9,7 @@ async function fetchUniqueCids() {
     `;
 
     const { rows } = await pool.query(query);
-    return rows.map(row => row.cd_cod);
+    return rows.map((row) => row.cd_cod);
 }
 
 module.exports = {
