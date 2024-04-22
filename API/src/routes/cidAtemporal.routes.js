@@ -15,12 +15,12 @@ router.get("/cidAtemporal", (req, res) => cidAtemporalController(req, res));
   @params
     - name: time_range
       type: string
-      required: false
+      required: true
       description: Time range of the data (format: YYYYMM-YYYYMM).
       example: "202206-202304"
     - name: cid
       type: string
-      required: false
+      required: true
       description: CID of the data.
       example: "F20"
 
