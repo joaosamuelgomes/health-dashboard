@@ -56,7 +56,7 @@ function App() {
         }
     }, [dados]);
 
-    const labels = ["Genero"];
+    const labels = ["Gênero"];
 
     const options = {
         responsive: true,
@@ -92,8 +92,10 @@ function App() {
     return (
         <>
             <Header />
-            <div className="flex w-[400px]">
-                <Bar options={options} data={data} />
+            <div className="flex justify-center items-center h-screen">
+                <div className="w-[800px] p-16 bg-slate-200 rounded">
+                    <Bar options={options} data={data} />
+                </div>
             </div>
         </>
     );
