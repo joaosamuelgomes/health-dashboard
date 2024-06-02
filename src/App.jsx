@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
+import DateSelector from "./components/DateSelector";
 import { fetchData } from "./services/apiServices";
-import { Bar } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 import {
     Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
+    ArcElement,
     Tooltip,
     Legend,
+    Title,
 } from "chart.js";
 import Header from "./pages/Header";
 
@@ -24,14 +23,7 @@ function App() {
     const [cid, setCid] = useState("");
     const [gender, setGender] = useState("");
 
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        BarElement,
-        Title,
-        Tooltip,
-        Legend
-    );
+    ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
     useEffect(() => {
         fetchData(time_range, age, cid, gender).then((data) => {
@@ -56,7 +48,20 @@ function App() {
         }
     }, [dados]);
 
-    const labels = ["Gênero"];
+    const handleDateChange = (range) => {
+        setTime_range(range);
+    };
+
+    const data = {
+        labels: ["Feminino", "Masculino"],
+        datasets: [
+            {
+                data: [femaleCount, maleCount],
+                backgroundColor: ["rgba(255, 99, 132, 0.5)", "rgba(53, 162, 235, 0.5)"],
+                hoverBackgroundColor: ["rgba(255, 99, 132, 0.7)", "rgba(53, 162, 235, 0.7)"],
+            },
+        ],
+    };
 
     const options = {
         responsive: true,
@@ -71,30 +76,15 @@ function App() {
         },
     };
 
-    const datasets = [
-        {
-            label: "Feminino",
-            data: [femaleCount],
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-        },
-        {
-            label: "Masculino",
-            data: [maleCount],
-            backgroundColor: "rgba(53, 162, 235, 0.5)",
-        },
-    ];
-
-    const data = {
-        labels,
-        datasets,
-    };
-
     return (
         <>
             <Header />
-            <div className="flex justify-center items-center h-screen">
-                <div className="w-[800px] p-16 bg-slate-200 rounded">
-                    <Bar options={options} data={data} />
+            <div className="p-8 mx-auto flex justify-end mt-12">
+                <DateSelector onChange={handleDateChange} />
+            </div>
+            <div className="p-8 flex justify-end items-center">
+                <div className="w-[436px] flex justify-center p-8 bg-white rounded">
+                    <Pie options={options} data={data} />
                 </div>
             </div>
         </>
