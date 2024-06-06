@@ -47,7 +47,8 @@ const DateSelector = ({ onChange }) => {
                         id="startMonth"
                         value={startMonth}
                         onChange={(e) => setStartMonth(e.target.value)}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white text-black rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full min-w-[140px] py-2 px-3 border border-gray-300 bg-white text-black rounded-md shadow-sm 
+                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                         {months.map((month) => (
                             <option key={month.value} value={month.value}>
@@ -67,7 +68,8 @@ const DateSelector = ({ onChange }) => {
                         id="startYear"
                         value={startYear}
                         onChange={(e) => setStartYear(e.target.value)}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 text-black bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 text-black bg-white rounded-md shadow-sm 
+                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                         {years.map((year) => (
                             <option key={year} value={year}>
@@ -87,7 +89,8 @@ const DateSelector = ({ onChange }) => {
                         id="endMonth"
                         value={endMonth}
                         onChange={(e) => setEndMonth(e.target.value)}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 text-black bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full min-w-[140px] py-2 px-3 border border-gray-300 text-black bg-white rounded-md shadow-sm 
+                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                         {months.map((month) => (
                             <option key={month.value} value={month.value}>
@@ -107,7 +110,8 @@ const DateSelector = ({ onChange }) => {
                         id="endYear"
                         value={endYear}
                         onChange={(e) => setEndYear(e.target.value)}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 text-black bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 text-black bg-white rounded-md shadow-sm 
+                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                         {years.map((year) => (
                             <option key={year} value={year}>
