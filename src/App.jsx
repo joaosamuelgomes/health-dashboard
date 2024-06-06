@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import DateSelector from "./components/DateSelector";
 import { fetchData } from "./services/apiServices";
 import { Pie } from "react-chartjs-2";
@@ -7,10 +7,9 @@ import Header from "./pages/Header";
 import DataTable from "./components/DataTable";
 
 function App() {
+
     //estados
     const [dados, setDados] = useState([]);
-    const [maleCount, setMaleCount] = useState(0);
-    const [femaleCount, setFemaleCount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
     //variáveis
@@ -38,20 +37,18 @@ function App() {
             });
     }, [time_range, age, gender, cid]);
 
-    //alimentando gráfico de totais
-    useEffect(() => {
-        if (dados && dados.somaCids) {
-            let maleCount = 0;
-            let femaleCount = 0;
+    const { maleCount, femaleCount } = useMemo(() => {
+        let maleCount = 0;
+        let femaleCount = 0;
 
+        if (dados && dados.somaCids) {
             dados.somaCids.forEach((item) => {
                 maleCount += item.genderCounts["M"];
                 femaleCount += item.genderCounts["F"];
             });
-
-            setMaleCount(maleCount);
-            setFemaleCount(femaleCount);
         }
+
+        return { maleCount, femaleCount };
     }, [dados]);
 
     const data = {
