@@ -1,10 +1,11 @@
 # Health Dashboard
 
-O **Health Dashboard** é um projeto que visa fornecer uma visão geral das métricas de saúde em um formato visual e fácil de entender. Ele permite que os usuários monitorem dados relevantes e tomem decisões informadas.
+O Objetivo do **Health Dashboard** é desenvolver um dashboard interativo para exibir e filtrar dados do SIASUS no Rio Grande do Sul referentes ao período de 2013-2023, facilitando assim a análise e a tomada de decisões por parte dos gestores de saúde.
 
 ## Informações Básicas
 
 - **Nome do Projeto**: Health Dashboard
+- **Nome da Aplicação**: Painel Gestor de Saúde
 - **Descrição**: Um painel de controle para rastrear métricas de saúde.
 - **Licença**: MIT
 
